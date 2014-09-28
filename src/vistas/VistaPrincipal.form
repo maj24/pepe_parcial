@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="btn_buscar" min="-2" max="-2" attributes="0"/>
@@ -44,25 +44,25 @@
                               <Component id="panel_interno" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="panel_externo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="panel_externo" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Component id="lb_criterio_ordenamiento" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="combo_signos" min="-2" pref="63" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="combo_signos" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="panel_principal" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -101,19 +101,16 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="rbtn_ascendente" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="rbtn_descendente" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="combo_indices" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="combo_indices" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -121,29 +118,18 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="combo_indices" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="rbtn_ascendente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbtn_descendente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JComboBox" name="combo_indices">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &#xa;&quot;&#xcd;ndice Nacional de Precios al consumidor, Variaci&#xf3;n mensual&quot;,&#xa;&quot;&#xcd;ndice Nacional de Precios al consumidor, Variaci&#xf3;n acumulada&quot;, &#xa;&quot;&#xcd;ndice Nacional de Precios al consumidor, variaci&#xf3;n anual&quot;, &#xa;&quot;Inflaci&#xf3;n, Subyacente (nueva definici&#xf3;n), Mensual&quot;,&#xa;&quot;Inflaci&#xf3;n, Subyacente (nueva definici&#xf3;n), Acumulada en el a&#xf1;o&quot;,&#xa;&quot;Inflaci&#xf3;n, Subyacente (nueva definici&#xf3;n), Anual&quot;,&#xa;&quot;Inflaci&#xf3;n, No subyacente (nueva definici&#xf3;n), Mensual&quot;,&#xa;&quot;Inflaci&#xf3;n, No subyacente (nueva definici&#xf3;n), Acumulada en el a&#xf1;o&quot;,&#xa;&quot;Inflaci&#xf3;n, No subyacente (nueva definici&#xf3;n), Anual&quot;,&#xa;&quot;&#xcd;ndice Nacional de Precios al consumidor Canasta b&#xe1;sica, &quot;,&#xa;&quot;Variaci&#xf3;n mensual&quot;,&#xa;&quot;&#xcd;ndice Nacional de Precios al consumidor Canasta b&#xe1;sica, Variaci&#xf3;n acumulada&quot;,&#xa;&quot;&#xcd;ndice Nacional de Precios al consumidor Canasta b&#xe1;sica, Variaci&#xf3;n anual Inflaci&#xf3;n, &#xcd;ndice nacional precios productor sin petr&#xf3;leo y sin servicios (INPP), Mensual Inflaci&#xf3;n, &#xcd;ndice nacional precios productor sin petr&#xf3;leo y sin servicios (INPP), Acumulada en el a&#xf1;o Inflaci&#xf3;n,&quot;,&#xa;&quot;&#xcd;ndice nacional precios productor sin petr&#xf3;leo y sin servicios (INPP), Anual&quot;,&#xa;})" type="code"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_indicesActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JRadioButton" name="rbtn_ascendente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ascendente"/>
@@ -156,6 +142,18 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Descendente"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="combo_indices">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="&#xcd;ndice Nacional de Precios al consumidor, Variaci&#xf3;n mensual"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_indicesActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -320,7 +318,7 @@
             <Component class="javax.swing.JTable" name="tabla_resultados">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="1" rowCount="0">
+                  <Table columnCount="1" rowCount="7">
                     <Column editable="true" title="Valor del &#xed;ndice" type="java.lang.Object"/>
                   </Table>
                 </Property>
@@ -354,16 +352,6 @@
         <Property name="text" type="java.lang.String" value="Criterio de ordenamiento"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="combo_signos">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;&quot;, &quot;Item 2&quot;, &quot;Item 3&quot;, &quot;Item 4&quot; })" type="code"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_signosActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btn_limpiar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
@@ -375,6 +363,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_buscarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="combo_signos">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="="/>
+            <StringItem index="1" value="&gt;"/>
+            <StringItem index="2" value="&gt;="/>
+            <StringItem index="3" value="&lt;"/>
+            <StringItem index="4" value="&lt;="/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_signosActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

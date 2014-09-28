@@ -29,9 +29,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         panel_principal = new javax.swing.JPanel();
-        combo_indices = new javax.swing.JComboBox();
         rbtn_ascendente = new javax.swing.JRadioButton();
         rbtn_descendente = new javax.swing.JRadioButton();
+        combo_indices = new javax.swing.JComboBox();
         panel_interno = new javax.swing.JPanel();
         rbtn_insercion = new javax.swing.JRadioButton();
         rbtn_burbuja = new javax.swing.JRadioButton();
@@ -47,35 +47,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         lb_valor = new javax.swing.JLabel();
         tf_valor = new javax.swing.JTextField();
         lb_criterio_ordenamiento = new javax.swing.JLabel();
-        combo_signos = new javax.swing.JComboBox();
         btn_limpiar = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
+        combo_signos = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panel_principal.setBorder(javax.swing.BorderFactory.createTitledBorder("Índice"));
-
-        combo_indices.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
-            "Índice Nacional de Precios al consumidor, Variación mensual",
-            "Índice Nacional de Precios al consumidor, Variación acumulada",
-            "Índice Nacional de Precios al consumidor, variación anual",
-            "Inflación, Subyacente (nueva definición), Mensual",
-            "Inflación, Subyacente (nueva definición), Acumulada en el año",
-            "Inflación, Subyacente (nueva definición), Anual",
-            "Inflación, No subyacente (nueva definición), Mensual",
-            "Inflación, No subyacente (nueva definición), Acumulada en el año",
-            "Inflación, No subyacente (nueva definición), Anual",
-            "Índice Nacional de Precios al consumidor Canasta básica, ",
-            "Variación mensual",
-            "Índice Nacional de Precios al consumidor Canasta básica, Variación acumulada",
-            "Índice Nacional de Precios al consumidor Canasta básica, Variación anual Inflación, Índice nacional precios productor sin petróleo y sin servicios (INPP), Mensual Inflación, Índice nacional precios productor sin petróleo y sin servicios (INPP), Acumulada en el año Inflación,",
-            "Índice nacional precios productor sin petróleo y sin servicios (INPP), Anual",
-        }));
-        combo_indices.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_indicesActionPerformed(evt);
-            }
-        });
 
         rbtn_ascendente.setText("Ascendente");
         rbtn_ascendente.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +63,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
 
         rbtn_descendente.setText("Descendente");
+
+        combo_indices.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Índice Nacional de Precios al consumidor, Variación mensual" }));
+        combo_indices.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_indicesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_principalLayout = new javax.swing.GroupLayout(panel_principal);
         panel_principal.setLayout(panel_principalLayout);
@@ -98,20 +83,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rbtn_descendente)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panel_principalLayout.createSequentialGroup()
-                        .addComponent(combo_indices, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                    .addComponent(combo_indices, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         panel_principalLayout.setVerticalGroup(
             panel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_principalLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(combo_indices, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addGroup(panel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtn_ascendente)
                     .addComponent(rbtn_descendente))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panel_interno.setBorder(javax.swing.BorderFactory.createTitledBorder("Ordenamiento interno"));
@@ -200,7 +182,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         tabla_resultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
                 "Valor del índice"
@@ -229,13 +217,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         lb_criterio_ordenamiento.setText("Criterio de ordenamiento");
 
-        combo_signos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Item 2", "Item 3", "Item 4" }));
-        combo_signos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_signosActionPerformed(evt);
-            }
-        });
-
         btn_limpiar.setText("Limpiar");
 
         btn_buscar.setText("Buscar");
@@ -245,12 +226,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        combo_signos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "=", ">", ">=", "<", "<=" }));
+        combo_signos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_signosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_buscar)
@@ -267,18 +255,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                     .addComponent(tf_valor))
                                 .addComponent(panel_interno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(panel_externo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(lb_criterio_ordenamiento)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(combo_signos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(combo_signos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(panel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -314,10 +302,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtn_naturalActionPerformed
 
-    private void combo_signosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_signosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo_signosActionPerformed
-
     private void rbtn_ascendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_ascendenteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtn_ascendenteActionPerformed
@@ -333,6 +317,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void combo_indicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_indicesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_indicesActionPerformed
+
+    private void combo_signosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_signosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_signosActionPerformed
 
     /**
      * @param args the command line arguments
