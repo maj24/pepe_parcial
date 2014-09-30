@@ -40,14 +40,13 @@ public class Metodos {
     public void insercion(){
         
         int k;
-        Indice indiceAuxiliar = new Indice();
+        Indice indiceAuxiliar ;
         double valorAuxiliar;
         for(int i = 1; i < this.indices.size(); i++){
             indiceAuxiliar = indices.get(i);
-            valorAuxiliar = indiceAuxiliar.getValor();
+            //valorAuxiliar = indiceAuxiliar.getValor();
             k = i - 1;
-            while(k >= 0 && valorAuxiliar < k){
-                
+            while(k >= 0 && indiceAuxiliar.getValor() < indices.get(k).getValor()){
                 Indice indiceSustituto = indices.get(k);
                 indices.set(k + 1, indiceSustituto);
                 k--;
