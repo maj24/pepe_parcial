@@ -14,13 +14,13 @@ import java.util.ArrayList;
  */
 public class Filtro {
     String criterio;
-    int valor;
+    double valor;
     ArrayList<Indice> listaOrdenada;
     ArrayList<Indice> listaFiltrada;
     int indexInf;
     int indexSup;
 
-    public Filtro(String criterio, int valor, ArrayList<Indice> listaOrdenada) {
+    public Filtro(String criterio, double valor, ArrayList<Indice> listaOrdenada) {
         this.listaFiltrada = new ArrayList<>();
         this.criterio = criterio;
         this.valor = valor;

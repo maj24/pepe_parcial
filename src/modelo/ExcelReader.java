@@ -25,30 +25,33 @@ public class ExcelReader {
     private ArrayList<Indice> indices;
     
     public ExcelReader(){
+        //Cargando el woorbook del archivo de excel.
         try {
             workbook =
                 Workbook.getWorkbook(new 
-                    File("C:\\Users\\Luis\\Documents\\3erSemestreLIS\\Estructura de Datos"));
+                    File("C:\\Users\\Luis\\Documents\\3erSemestreLIS\\Estructura de Datos\\Banco_De_Mexico.xls"));
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Error de IO");
         } catch (BiffException ex) {
             JOptionPane.showMessageDialog(null, "Error diferente");
         }
            
-        Sheet sheet = workbook.getSheet(1); 
+        Sheet sheet = workbook.getSheet(0); 
         indices = new ArrayList<Indice>();
         
         //Llenado del ArrayList.
-        for(int i = 3; i < sheet.getRows(); i++){
-            Cell celdaValor = sheet.getCell(4, i);
-            Cell celdaFecha = sheet.getCell(1,2);
-            
-            Indice in = new Indice(
+        for(int i = 18; i < sheet.getRows(); i++){
+            Cell celdaValor = sheet.getCell(1, i);
+            Cell celdaFecha = sheet.getCell(0, i);
+            Indice in;
+            try{
+               in = new Indice(
                     Double.valueOf(celdaValor.getContents()), 
-                    celdaFecha.getContents()
-            );
-            
-            indices.add(in);       
+                    celdaFecha.getContents());
+               indices.add(in); 
+            }catch (NumberFormatException e){
+                System.out.println("Campo sin valor");
+            }
         }
         
     }

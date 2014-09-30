@@ -16,6 +16,10 @@ public class Metodos {
     
     private ArrayList<Indice> indices;
 
+    public Metodos(ArrayList<Indice> indices){
+        this.indices = indices;
+    }
+    
     /**
      * @return the indices
      */
