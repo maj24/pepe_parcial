@@ -30,6 +30,9 @@ public class Metodos {
         this.indices = indices;
     }
     
+     /**
+     * 
+     */
     public void insercion(){
         
         int k;
