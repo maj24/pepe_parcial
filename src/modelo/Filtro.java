@@ -32,19 +32,19 @@ public class Filtro {
         int indexDerecho=listaOrdenada.size()-1;
         int mitad = (listaOrdenada.size()) / 2;
         while(indexIzquierdo<=indexDerecho){
-            int num = listaOrdenada.get(mitad).getIndice();
+            double num = listaOrdenada.get(mitad).getValor();
             if(num == (valor)){
                 //System.out.println(mitad);
                 indexDerecho = mitad;
                 indexIzquierdo = mitad;
-                while(indexDerecho >=0 && valor == listaOrdenada.get(indexDerecho).getIndice())
+                while(indexDerecho >=0 && valor == listaOrdenada.get(indexDerecho).getValor())
                     --indexDerecho;
-                while(indexIzquierdo < listaOrdenada.size() && listaOrdenada.get(indexIzquierdo).getIndice() == valor)
+                while(indexIzquierdo < listaOrdenada.size() && listaOrdenada.get(indexIzquierdo).getValor() == valor)
                     indexIzquierdo++;
                 break;
             }
             else {
-                if(valor < listaOrdenada.get(mitad).getIndice()){
+                if(valor < listaOrdenada.get(mitad).getValor()){
                     indexDerecho = mitad-1;
                     mitad = (indexDerecho + indexIzquierdo)/2;
                 }

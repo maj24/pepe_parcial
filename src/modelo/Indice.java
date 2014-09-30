@@ -11,19 +11,22 @@ package modelo;
  * @author MariaJose
  */
 public class Indice {
-    public int indice;
+    private double valor;
     private String fecha;
 
-    public Indice(int indice, String fecha) {
-        this.indice = indice;
+    public Indice(double valor, String fecha) {
+        this.valor = valor;
         this.fecha = fecha;
+    }
+    
+    public Indice(){
     }
 
     /**
      * @return the indice
      */
-    public int getIndice() {
-        return indice;
+    public double getValor() {
+        return valor;
     }
 
     /**

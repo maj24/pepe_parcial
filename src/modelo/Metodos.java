@@ -14,32 +14,32 @@ import java.util.ArrayList;
  */
 public class Metodos {
     
-    private ArrayList<?> indices;
+    private ArrayList<Indice> indices;
 
     /**
      * @return the indices
      */
-    public ArrayList<?> getIndices() {
+    public ArrayList<Indice> getIndices() {
         return indices;
     }
 
     /**
      * @param indices the indices to set
      */
-    public void setIndices(ArrayList<?> indices) {
+    public void setIndices(ArrayList<Indice> indices) {
         this.indices = indices;
     }
     
     public void insercion(){
         
-        Indice indiceAuxiliar = new Indice();
         int k;
+        Indice indiceAuxiliar = new Indice();
         double valorAuxiliar;
         for(int i = 1; i < this.indices.size(); i++){
             indiceAuxiliar = indices.get(i);
             valorAuxiliar = indiceAuxiliar.getValor();
             k = i - 1;
-            while(k >= 0 && indiceAuxiliar < k){
+            while(k >= 0 && valorAuxiliar < k){
                 
                 Indice indiceSustituto = indices.get(k);
                 indices.set(k + 1, indiceSustituto);
