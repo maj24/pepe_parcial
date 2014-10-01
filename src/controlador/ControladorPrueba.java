@@ -19,26 +19,25 @@ public class ControladorPrueba {
     
     public static void main(String[] args) {
         
+        //Cargamos el archivo de excel.
         ExcelReader workbook = new ExcelReader();
-        //System.out.println("DESORDENADOS");
-        //(int i=0; i<workbook.getIndices().size(); i++){
-        //    System.out.println("Valor: " +workbook.getIndices().get(i).getValor() + " ");
-        //}
+        //Obtenemos el ArrayList desordenado.
         Metodos metodos = new Metodos(workbook.getIndices());
-        metodos.insercion();
-        
-//        System.out.println("ORDENADOS");
-//        System.out.println("--------------------------------");
-//        for(int i=0; i<metodos.getIndices().size(); i++){
-//            System.out.println("Valor: " +metodos.getIndices().get(i).getValor() + " ");
-//        }
+        //Ordenamiento
+        metodos.burbujaDescendete();
         ArrayList<Indice> listaOrdenada = metodos.getIndices();
-        Filtro filtro = new Filtro("<", 1.0, listaOrdenada);
-        filtro.busquedaBinaria();
-        ArrayList<Indice> listaResultados = filtro.filtrar();
+        //Busqueda binaria.
+        //Filtro filtro = new Filtro("<", 1.0, listaOrdenada);
+        //filtro.busquedaBinaria();
+        //Obtenemos los resultados luego de la busqueda binaria.
+        //ArrayList<Indice> listaResultados = filtro.filtrar();
 
-        for(int i=0; i<listaResultados.size(); i++){
-            System.out.println("Valor: " +listaResultados.get(i).getValor() + " ");
+//        for(int i=0; i<listaResultados.size(); i++){
+//            System.out.println("Valor: " +listaResultados.get(i).getValor() + " ");
+//        }
+        
+        for(int i=0; i<metodos.getIndices().size(); i++){
+            System.out.println("Valor: " + metodos.getIndices().get(i).getValor() + " ");
         }
         
         
