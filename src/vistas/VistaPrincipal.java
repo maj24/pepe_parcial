@@ -362,12 +362,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public javax.swing.JButton btn_limpiar;
     public javax.swing.JComboBox combo_indices;
     public javax.swing.JComboBox combo_signos;
-    private javax.swing.JLabel lb_criterio_ordenamiento;
-    private javax.swing.JLabel lb_valor;
-    private javax.swing.JPanel panel_externo;
-    private javax.swing.JPanel panel_interno;
-    private javax.swing.JPanel panel_principal;
-    private javax.swing.JPanel panel_resultados;
+    public javax.swing.JLabel lb_criterio_ordenamiento;
+    public javax.swing.JLabel lb_valor;
+    public javax.swing.JPanel panel_externo;
+    public javax.swing.JPanel panel_interno;
+    public javax.swing.JPanel panel_principal;
+    public javax.swing.JPanel panel_resultados;
     public javax.swing.JRadioButton rbtn_ascendente;
     public javax.swing.JRadioButton rbtn_burbuja;
     public javax.swing.JRadioButton rbtn_descendente;

@@ -85,7 +85,7 @@ public class Metodos {
      * Ordena de forma ascendente un ArrayList perteneciente a esta misma clase 
      * mediante el método de Burbuja.
      */    
-    public void burbujaAscendete(){
+    public void burbujaAscendente(){
         
         int i, j;
         Indice indiceAuxiliar ;
@@ -106,7 +106,7 @@ public class Metodos {
      * Ordena de forma descendente un ArrayList perteneciente a esta misma clase 
      * mediante el método de Inserción.
      */
-    public void burbujaDescendete(){
+    public void burbujaDescendente(){
         
         int i, j;
         Indice indiceAuxiliar ;
@@ -185,7 +185,11 @@ public class Metodos {
         
     }
     
-    public void mergeSort(){
+    public void mergeSortAscendente(){
+    
+    }
+    
+    public void mergeSortDescendente(){
     
     }
     
@@ -218,6 +222,9 @@ public class Metodos {
         
     }
     
+    public void quickSortDescendente(){
+        
+    }
     
     public int posicionaQuickSort(int ini, int fin){
         
@@ -246,13 +253,14 @@ public class Metodos {
                 indices.set(der, indiceAuxiliar);
                 pos = der;
                 while(indices.get(pos).getValor() >= indices.get(izq).getValor() && pos != izq){
-                    izq = izq + 1;
+                    izq++;
                 }
                 
                 if(pos == izq){
                     band = false;
                 }
                 else{
+                    
                     indiceAuxiliar = indices.get(pos);
                     indices.set(pos, indices.get(izq));
                     indices.set(izq, indiceAuxiliar);
@@ -264,4 +272,19 @@ public class Metodos {
         
     }
     
+    public void mezclaDirectaAscendente(){
+        
+    }
+    
+    public void mezclaDirectaDescendente(){
+        
+    }
+    
+    public void mezclaNaturalAscendente(){
+        
+    }
+    
+    public void mezclaNaturalDescendente(){
+        
+    }
 }

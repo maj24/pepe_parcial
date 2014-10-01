@@ -158,39 +158,74 @@ public class Controlador implements ActionListener {
     }
     
     public void buscar(){
+        
         int index_columna = vp.combo_indices.getSelectedIndex() + 1;
         double valor = Double.parseDouble(vp.tf_valor.getText());
         String signo = vp.combo_signos.getSelectedItem().toString();
         ExcelReader workbook = new ExcelReader(index_columna);
         Metodos metodos = new Metodos(workbook.getIndices());
+        
+        //Seleccionamos el metodo de ordenacion adecuado.
         if(vp.rbtn_insercion.isSelected()){
             if(vp.rbtn_ascendente.isSelected())
                 metodos.insercionAscendente();
             else
                 metodos.insercionDescendente();
-        } 
-        else {
-            if(vp.rbtn_burbuja.isSelected()){
-                if(vp.rbtn_ascendente.isSelected())
-                     metodos.burbujaAscendete();
-                else
-                     metodos.burbujaDescendete();
-            }
         }
-         ArrayList<Indice> listaOrdenada = metodos.getIndices();
-         Filtro filtro = new Filtro(signo, valor, listaOrdenada);
-         filtro.busquedaBinaria();
-         ArrayList<Indice> listaResultados = filtro.filtrar();
+        if(vp.rbtn_burbuja.isSelected()){
+            if(vp.rbtn_ascendente.isSelected())
+                metodos.burbujaAscendente();
+            else
+                metodos.burbujaDescendente();
+        }
+        if(vp.rbtn_shellsort.isSelected()){
+            if(vp.rbtn_ascendente.isSelected())
+                metodos.shellSortAscendente();
+            else
+                metodos.shellSortDescendente();
+        }
+        if(vp.rbtn_mergesort.isSelected()){
+            if(vp.rbtn_ascendente.isSelected())
+                metodos.mergeSortAscendente();
+            else
+                metodos.mergeSortDescendente();
+        }
+        if(vp.rbtn_quicksort.isSelected()){
+            if(vp.rbtn_ascendente.isSelected())
+                metodos.quickSortAscendente();
+            else
+                metodos.quickSortDescendente();
+        }
+        if(vp.rbtn_directa.isSelected()){
+            if(vp.rbtn_ascendente.isSelected())
+                metodos.mezclaDirectaAscendente();
+            else
+                metodos.mezclaDirectaDescendente();
+        }
+        if(vp.rbtn_natural.isSelected()){
+            if(vp.rbtn_ascendente.isSelected())
+                metodos.mezclaNaturalAscendente();
+            else
+                metodos.mezclaNaturalDescendente();
+        }
+        
+        ArrayList<Indice> listaOrdenada = metodos.getIndices();
+        Filtro filtro = new Filtro(signo, valor, listaOrdenada);
+        filtro.busquedaBinaria();
+        ArrayList<Indice> listaResultados = filtro.filtrar();
 
-         // Lena la tabla
-         DefaultTableModel modelo = (DefaultTableModel)vp.tabla_resultados.getModel();  
-         while(modelo.getRowCount()>0)
-         modelo.removeRow(0); 
-         Object[] fila=new Object[1];
-         for (int i = 0; i <listaResultados.size(); i++) {
-             fila[0]=listaResultados.get(i).getValor();
-             modelo.addRow(fila);
-         }
+        //Llenado de la tabla.
+        DefaultTableModel modelo = (DefaultTableModel)vp.tabla_resultados.getModel();  
+        while(modelo.getRowCount()>0)
+        modelo.removeRow(0); 
+        Object[] fila = new Object[1];
+        
+        for (int i = 0; i <listaResultados.size(); i++) {
+            
+            fila[0]=listaResultados.get(i).getValor();
+            modelo.addRow(fila);
+            
+        }
     }
    
 }
