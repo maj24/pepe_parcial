@@ -20,12 +20,12 @@ public class ControladorPrueba {
     public static void main(String[] args) {
         
         //Cargamos el archivo de excel.
-        ExcelReader workbook = new ExcelReader();
+        //ExcelReader workbook = new ExcelReader();
         //Obtenemos el ArrayList desordenado.
-        Metodos metodos = new Metodos(workbook.getIndices());
-        //Ordenamiento
-        metodos.burbujaDescendete();
-        ArrayList<Indice> listaOrdenada = metodos.getIndices();
+//        Metodos metodos = new Metodos(workbook.getIndices());
+//        //Ordenamiento
+//        metodos.quickSortAscendente();
+//        ArrayList<Indice> listaOrdenada = metodos.getIndices();
         //Busqueda binaria.
         //Filtro filtro = new Filtro("<", 1.0, listaOrdenada);
         //filtro.busquedaBinaria();
@@ -36,9 +36,9 @@ public class ControladorPrueba {
 //            System.out.println("Valor: " +listaResultados.get(i).getValor() + " ");
 //        }
         
-        for(int i=0; i<metodos.getIndices().size(); i++){
-            System.out.println("Valor: " + metodos.getIndices().get(i).getValor() + " ");
-        }
+//        for(int i=0; i<metodos.getIndices().size(); i++){
+//            System.out.println("Valor: " + metodos.getIndices().get(i).getValor() + " ");
+//        }
         
         
     }

@@ -358,27 +358,27 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_buscar;
-    private javax.swing.JButton btn_limpiar;
-    private javax.swing.JComboBox combo_indices;
-    private javax.swing.JComboBox combo_signos;
+    public javax.swing.JButton btn_buscar;
+    public javax.swing.JButton btn_limpiar;
+    public javax.swing.JComboBox combo_indices;
+    public javax.swing.JComboBox combo_signos;
     private javax.swing.JLabel lb_criterio_ordenamiento;
     private javax.swing.JLabel lb_valor;
     private javax.swing.JPanel panel_externo;
     private javax.swing.JPanel panel_interno;
     private javax.swing.JPanel panel_principal;
     private javax.swing.JPanel panel_resultados;
-    private javax.swing.JRadioButton rbtn_ascendente;
-    private javax.swing.JRadioButton rbtn_burbuja;
-    private javax.swing.JRadioButton rbtn_descendente;
-    private javax.swing.JRadioButton rbtn_directa;
-    private javax.swing.JRadioButton rbtn_insercion;
-    private javax.swing.JRadioButton rbtn_mergesort;
-    private javax.swing.JRadioButton rbtn_natural;
-    private javax.swing.JRadioButton rbtn_quicksort;
-    private javax.swing.JRadioButton rbtn_shellsort;
+    public javax.swing.JRadioButton rbtn_ascendente;
+    public javax.swing.JRadioButton rbtn_burbuja;
+    public javax.swing.JRadioButton rbtn_descendente;
+    public javax.swing.JRadioButton rbtn_directa;
+    public javax.swing.JRadioButton rbtn_insercion;
+    public javax.swing.JRadioButton rbtn_mergesort;
+    public javax.swing.JRadioButton rbtn_natural;
+    public javax.swing.JRadioButton rbtn_quicksort;
+    public javax.swing.JRadioButton rbtn_shellsort;
     private javax.swing.JScrollPane scrollpane_tabla;
-    private javax.swing.JTable tabla_resultados;
-    private javax.swing.JTextField tf_valor;
+    public javax.swing.JTable tabla_resultados;
+    public javax.swing.JTextField tf_valor;
     // End of variables declaration//GEN-END:variables
 }

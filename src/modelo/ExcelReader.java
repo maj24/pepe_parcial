@@ -23,9 +23,11 @@ public class ExcelReader {
     
     Workbook workbook = null;
     private ArrayList<Indice> indices;
+    int index_columna;
     
-    public ExcelReader(){
+    public ExcelReader(int index_columna){
         //Cargando el woorbook del archivo de excel.
+        this.index_columna = index_columna;
         try {
             workbook =
                 Workbook.getWorkbook(new 
@@ -41,7 +43,7 @@ public class ExcelReader {
         
         //Llenado del ArrayList.
         for(int i = 18; i < sheet.getRows(); i++){
-            Cell celdaValor = sheet.getCell(1, i);
+            Cell celdaValor = sheet.getCell(index_columna, i);
             Cell celdaFecha = sheet.getCell(0, i);
             Indice in;
             try{
