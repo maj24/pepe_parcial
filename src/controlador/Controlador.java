@@ -186,15 +186,15 @@ public class Controlador implements ActionListener {
         }
         if(vp.rbtn_mergesort.isSelected()){
             if(vp.rbtn_ascendente.isSelected())
-                metodos.mergeSortAscendente();
+                metodos.mergeSortAscendente(metodos.getIndices());
             else
-                metodos.mergeSortDescendente();
+                metodos.mergeSortDescendente(metodos.getIndices());
         }
         if(vp.rbtn_quicksort.isSelected()){
             if(vp.rbtn_ascendente.isSelected())
                 metodos.quickSortAscendente();
             else
-                metodos.quickSortDescendente();
+                metodos.quickSortDescendente(0, metodos.getIndices().size() - 1);
         }
         if(vp.rbtn_directa.isSelected()){
             if(vp.rbtn_ascendente.isSelected())

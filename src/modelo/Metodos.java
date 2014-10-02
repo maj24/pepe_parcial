@@ -185,94 +185,88 @@ public class Metodos {
         
     }
     
-    public void mergeSortAscendente(){
-    
-    }
-    
-    public void mergeSortDescendente(){
-    
-    }
-    
-    public void quickSortAscendente(){
-        
-        int ini, fin, pos;
-        ArrayList pilaMenor = new ArrayList(),
-                  pilaMayor = new ArrayList();
-        pilaMenor.add(0);
-        pilaMayor.add(indices.size() - 1);
-        
-        while(!pilaMenor.isEmpty()){
-            
-            ini = (Integer)pilaMenor.remove(pilaMenor.size() - 1);
-            fin = (Integer)pilaMayor.remove(pilaMayor.size() - 1);
-            pos = posicionaQuickSort(ini, fin);
-            
-            if(ini < pos -1){                
-                pilaMenor.add(ini);
-                pilaMayor.add(pos - 1);
-            }
-            
-            if(ini > pos + 1){
-                pilaMenor.add(pos + 1);
-                pilaMayor.add(fin);   
-            }
-            
+    public ArrayList<Indice> mergeSortAscendente(ArrayList<Indice> in){
+        int n = in.size(),i,m;
+        ArrayList<Indice> L1 = new ArrayList<Indice>(),
+                L2 = new ArrayList<Indice>();
+        if(n>1){
+           m = n/2;
+           for(i=0;i<m;i++){
+             L1.add(in.get(i));
+           }
+           for(i=m;i<n;i++){
+             L2.add(in.get(i));
+           }
+           in = mergeAscendente(mergeSortAscendente(L1),mergeSortAscendente(L2));
         }
-        
-        
+         return indices = in;
     }
     
-    public void quickSortDescendente(){
-        
-    }
-    
-    public int posicionaQuickSort(int ini, int fin){
-        
-        int pos;
-        int izq, der;
-        Indice indiceAuxiliar;
-        boolean band;
-         
-        izq = ini;
-        der = fin;
-        pos = ini;
-        band = true;
-        
-        while(band == true){
-            
-            while(indices.get(pos).getValor() <= indices.get(der).getValor() && pos != der){
-                der--;
-            }
-            
-            if(pos == der){
-                band = false;
-            }
-            else{
-                indiceAuxiliar = indices.get(pos);
-                indices.set(pos, indices.get(der));
-                indices.set(der, indiceAuxiliar);
-                pos = der;
-                while(indices.get(pos).getValor() >= indices.get(izq).getValor() && pos != izq){
-                    izq++;
-                }
-                
-                if(pos == izq){
-                    band = false;
-                }
-                else{
-                    
-                    indiceAuxiliar = indices.get(pos);
-                    indices.set(pos, indices.get(izq));
-                    indices.set(izq, indiceAuxiliar);
-                    pos = izq;
-                }
-            }
+    public ArrayList<Indice> mergeAscendente(ArrayList<Indice> L1,ArrayList<Indice> L2){
+        ArrayList<Indice> lista = new ArrayList<Indice>();
+        while(!L1.isEmpty() && !L2.isEmpty()){
+          if(L1.get(0).getValor() < L2.get(0).getValor()){
+             lista.add(L1.get(0));
+             L1.remove(0);
+             if(L1.isEmpty()){
+               lista.addAll(L2);
+               L2.clear();
+             }
+          }
+          else{
+             lista.add(L2.get(0));
+             L2.remove(0);
+             if(L2.isEmpty()){
+               lista.addAll(L1);
+               L1.clear();
+             }
+          }
         }
-        return pos;
-        
+        return lista;
+    }
+
+        public ArrayList<Indice> mergeSortDescendente(ArrayList<Indice> in){
+        int n = in.size(),i,m;
+        ArrayList<Indice> L1 = new ArrayList<Indice>(),
+                L2 = new ArrayList<Indice>();
+        if(n>1){
+           m = n/2;
+           for(i=0;i<m;i++){
+             L1.add(in.get(i));
+           }
+           for(i=m;i<n;i++){
+             L2.add(in.get(i));
+           }
+           in = mergeDescendente(mergeSortDescendente(L1),mergeSortDescendente(L2));
+        }
+         return indices = in;
     }
     
-    public ArrayList<Indice> quickAscendente(){
+    public ArrayList<Indice> mergeDescendente(ArrayList<Indice> L1,ArrayList<Indice> L2){
+        ArrayList<Indice> lista = new ArrayList<Indice>();
+        while(!L1.isEmpty() && !L2.isEmpty()){
+          if(L1.get(0).getValor() > L2.get(0).getValor()){
+             lista.add(L1.get(0));
+             L1.remove(0);
+             if(L1.isEmpty()){
+               lista.addAll(L2);
+               L2.clear();
+             }
+          }
+          else{
+             lista.add(L2.get(0));
+             L2.remove(0);
+             if(L2.isEmpty()){
+               lista.addAll(L1);
+               L1.clear();
+             }
+          }
+        }
+        return lista;
+    }
+    
+    
+    public ArrayList<Indice> quickSortAscendente(){
         return quickOrdenaAscendente(0, indices.size() - 1);
     }
     
@@ -310,11 +304,11 @@ public class Metodos {
         return indices;
     }
     
-    public void quickDescendente(int p, int r) {
+    public void quickSortDescendente(int p, int r) {
         if (p < r) {
             int q = particion(p, r);
-            quickDescendente(p, q);
-            quickDescendente(q + 1, r);
+            quickSortDescendente(p, q);
+            quickSortDescendente(q + 1, r);
         }
     }
 

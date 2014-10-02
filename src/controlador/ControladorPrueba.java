@@ -24,7 +24,8 @@ public class ControladorPrueba {
         //Obtenemos el ArrayList desordenado.
         Metodos metodos = new Metodos(workbook.getIndices());
 //        //Ordenamiento
-        metodos.quickDescendente(0, metodos.getIndices().size() - 1);
+        //metodos.quickSortDescendente(0, metodos.getIndices().size() - 1);
+        metodos.mergeSortDescendente(metodos.getIndices());
 //        ArrayList<Indice> listaOrdenada = metodos.getIndices();
         //Busqueda binaria.
         //Filtro filtro = new Filtro("<", 1.0, listaOrdenada);
