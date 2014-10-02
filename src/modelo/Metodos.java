@@ -199,7 +199,7 @@ public class Metodos {
         ArrayList pilaMenor = new ArrayList(),
                   pilaMayor = new ArrayList();
         pilaMenor.add(0);
-        pilaMayor.add(indices.size() -1);
+        pilaMayor.add(indices.size() - 1);
         
         while(!pilaMenor.isEmpty()){
             
@@ -271,6 +271,78 @@ public class Metodos {
         return pos;
         
     }
+    
+    public ArrayList<Indice> quickAscendente(){
+        return quickOrdenaAscendente(0, indices.size() - 1);
+    }
+    
+    public ArrayList<Indice> quickOrdenaAscendente(int izq, int der){
+        if(izq >= der){
+            return indices;
+        }
+        int i = izq, d = der;
+        if(izq != der){
+            int pivote;
+            Indice aux;   
+            pivote = izq;
+            while(izq != der){
+                while(indices.get(der).getValor() >= indices.get(pivote).getValor() && izq < der){
+                    der--;
+                }
+                while(indices.get(izq).getValor() < indices.get(pivote).getValor() && izq < der){
+                    izq++;
+                }
+                if(izq != der){
+                    aux = indices.get(der);
+                    indices.set(der, indices.get(izq));
+                    indices.set(izq, aux);
+                    
+                }
+                if(izq == der){
+                    quickOrdenaAscendente(i, izq - 1);
+                    quickOrdenaAscendente(izq + 1, d);
+                }
+            }
+        }else{
+            return indices;
+        }
+        
+        return indices;
+    }
+    
+    public void quickDescendente(int p, int r) {
+        if (p < r) {
+            int q = particion(p, r);
+            quickDescendente(p, q);
+            quickDescendente(q + 1, r);
+        }
+    }
+
+    public int particion(int p, int r) {
+        double x = indices.get(p).getValor(); // pivot
+        int i = p;
+        int j = r;
+        while (true) {
+
+        while (indices.get(i).getValor() > x) {
+            i++;
+        }
+
+        while (indices.get(j).getValor() < x) {
+            j--;
+        }
+        if (i < j) {
+            Indice temp = indices.get(i);
+            indices.set(i, indices.get(j));
+            indices.set(j, temp);
+            i++;
+            j--;
+        } else {
+            return j;
+        }
+    }
+}
+    
     
     public void mezclaDirectaAscendente(){
         
