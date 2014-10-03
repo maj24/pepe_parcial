@@ -185,6 +185,13 @@ public class Metodos {
         
     }
     
+    /**
+     * Realiza el llamado recursivo a una funcion que ordena un ArrayList 
+     * de manera ascendente.
+     * @param in Un ArrayList que contiene los indices desordenado de esta clase.
+     * @return indices = in El ArrayList ordenado es asignado al  ArrayList de
+     * esta clase.
+     */     
     public ArrayList<Indice> mergeSortAscendente(ArrayList<Indice> in){
         int n = in.size(),i,m;
         ArrayList<Indice> L1 = new ArrayList<Indice>(),
@@ -202,6 +209,10 @@ public class Metodos {
          return indices = in;
     }
     
+    /**
+     * Ordena de forma ascendente un ArrayList perteneciente a esta misma clase 
+     * mediante el método de MergeSort.
+     */   
     public ArrayList<Indice> mergeAscendente(ArrayList<Indice> L1,ArrayList<Indice> L2){
         ArrayList<Indice> lista = new ArrayList<Indice>();
         while(!L1.isEmpty() && !L2.isEmpty()){
@@ -224,8 +235,15 @@ public class Metodos {
         }
         return lista;
     }
-
-        public ArrayList<Indice> mergeSortDescendente(ArrayList<Indice> in){
+    
+/**
+ * Realiza el llamado recursivo a una funcion que ordena un ArrayList 
+ * de manera descendente.
+ * @param in Un ArrayList que contiene los indices tomados de esta clase.
+ * @return indices = in El ArrayList ordenado es asignado al  ArrayList de
+     * esta clase.
+ */
+    public ArrayList<Indice> mergeSortDescendente(ArrayList<Indice> in){
         int n = in.size(),i,m;
         ArrayList<Indice> L1 = new ArrayList<Indice>(),
                 L2 = new ArrayList<Indice>();
@@ -242,6 +260,11 @@ public class Metodos {
          return indices = in;
     }
     
+    /**
+     * Ordena de forma descendente un ArrayList perteneciente a esta misma clase 
+     * mediante el método de MergeSort.
+     * @return Un ArrayList ordenado.
+     */   
     public ArrayList<Indice> mergeDescendente(ArrayList<Indice> L1,ArrayList<Indice> L2){
         ArrayList<Indice> lista = new ArrayList<Indice>();
         while(!L1.isEmpty() && !L2.isEmpty()){
@@ -265,11 +288,22 @@ public class Metodos {
         return lista;
     }
     
-    
+   /**
+    * Llama a una funcion recursiva que ordena un ArrayList mediante
+    * el método de QuickSort.
+    * @return Llamado a una función recursiva.
+    */
     public ArrayList<Indice> quickSortAscendente(){
         return quickOrdenaAscendente(0, indices.size() - 1);
     }
     
+    /**
+     * Ordena de forma ascendente un ArrayList perteneciente a esta misma clase 
+     * mediante el método de QuickSort.
+     * @param izq
+     * @param der
+     * @return 
+     */
     public ArrayList<Indice> quickOrdenaAscendente(int izq, int der){
         if(izq >= der){
             return indices;
@@ -303,7 +337,12 @@ public class Metodos {
         
         return indices;
     }
-    
+    /**
+     * Llama a una funcion recursiva que ordena un ArrayList mediante
+     * el método de QuickSort.
+     * @param p
+     * @param r 
+     */
     public void quickSortDescendente(int p, int r) {
         if (p < r) {
             int q = particion(p, r);
@@ -311,33 +350,38 @@ public class Metodos {
             quickSortDescendente(q + 1, r);
         }
     }
-
+    /**
+     * Ordena de forma descendente un ArrayList perteneciente a esta misma clase 
+     * mediante el método de QuickSort.
+     * @param p El pivote
+     * @param r Extremo derecho
+     * @return j Nuevo extremo derecho después de una interación.
+     */
     public int particion(int p, int r) {
         double x = indices.get(p).getValor(); // pivot
         int i = p;
         int j = r;
         while (true) {
 
-        while (indices.get(i).getValor() > x) {
-            i++;
-        }
+            while (indices.get(i).getValor() > x) {
+                i++;
+            }
 
-        while (indices.get(j).getValor() < x) {
-            j--;
-        }
-        if (i < j) {
-            Indice temp = indices.get(i);
-            indices.set(i, indices.get(j));
-            indices.set(j, temp);
-            i++;
-            j--;
-        } else {
-            return j;
+            while (indices.get(j).getValor() < x) {
+                j--;
+            }
+            if (i < j) {
+                Indice temp = indices.get(i);
+                indices.set(i, indices.get(j));
+                indices.set(j, temp);
+                i++;
+                j--;
+            } else {
+                return j;
+            }
         }
     }
-}
-    
-    
+   
     public void mezclaDirectaAscendente(){
         
     }
