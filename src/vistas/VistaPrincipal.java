@@ -55,6 +55,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         panel_principal.setBorder(javax.swing.BorderFactory.createTitledBorder("Índice"));
 
+        rbtn_ascendente.setSelected(true);
         rbtn_ascendente.setText("Ascendente");
         rbtn_ascendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +99,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         panel_interno.setBorder(javax.swing.BorderFactory.createTitledBorder("Ordenamiento interno"));
 
+        rbtn_insercion.setSelected(true);
         rbtn_insercion.setText("Inserción");
         rbtn_insercion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

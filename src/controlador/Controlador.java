@@ -22,7 +22,7 @@ import modelo.Metodos;
 import vistas.VistaPrincipal;
 
 /**
- *
+ * Controlador
  * @author MariaJose
  */
 public class Controlador implements ActionListener {
@@ -145,7 +145,7 @@ public class Controlador implements ActionListener {
                                                 vp.rbtn_directa.setSelected(false);
                                                 vp.rbtn_insercion.setSelected(false);
                                             }
-                                            else {  // Se preciona "Limpiar"
+                                            else {  // Se presiona "Limpiar"
                                                 if(this.vp.btn_limpiar == e.getSource()){
                                                     vp.tf_valor.setText("");
                                                     DefaultTableModel modelo = (DefaultTableModel) vp.tabla_resultados.getModel();
@@ -218,8 +218,15 @@ public class Controlador implements ActionListener {
         
         ArrayList<Indice> listaOrdenada = metodos.getIndices();
         Filtro filtro = new Filtro(signo, valor, listaOrdenada);
-        filtro.busquedaBinaria();
-        ArrayList<Indice> listaResultados = filtro.filtrar();
+        ArrayList<Indice> listaFiltrada = new ArrayList<>();
+        if(vp.rbtn_ascendente.isSelected()){
+            filtro.busquedaBinaria_ascendente();
+            listaFiltrada = filtro.filtrar(true);
+        }
+        else {
+            filtro.busquedaBinaria_descendente();
+            listaFiltrada = filtro.filtrar(false);
+        }
 
         //Llenado de la tabla.
         DefaultTableModel modelo = (DefaultTableModel)vp.tabla_resultados.getModel();  
@@ -227,9 +234,9 @@ public class Controlador implements ActionListener {
         modelo.removeRow(0); 
         Object[] fila = new Object[1];
         
-        for (int i = 0; i <listaResultados.size(); i++) {
+        for (int i = 0; i <listaFiltrada.size(); i++) {
             
-            fila[0]=listaResultados.get(i).getValor();
+            fila[0]=listaFiltrada.get(i).getValor();
             modelo.addRow(fila);
             
         }

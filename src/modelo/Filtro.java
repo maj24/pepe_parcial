@@ -9,7 +9,8 @@ package modelo;
 import java.util.ArrayList;
 
 /**
- *
+ * Clase que puede filtrar los elementos de una lista ordenada de forma ascendente o descendente
+ * a partir de un criterio y un valor introducidos por el usuario.
  * @author MariaJose
  */
 public class Filtro {
@@ -20,6 +21,12 @@ public class Filtro {
     int indexInf;
     int indexSup;
 
+    /**
+     * Constructor de la clase Filtro
+     * @param criterio Criterio de ordenamiento.
+     * @param valor Valor a partir del cual se mostrarán los resultados.
+     * @param listaOrdenada Lista a ser filtrada.
+     */
     public Filtro(String criterio, double valor, ArrayList<Indice> listaOrdenada) {
         this.listaFiltrada = new ArrayList<>();
         this.criterio = criterio;
@@ -27,60 +34,106 @@ public class Filtro {
         this.listaOrdenada = listaOrdenada;
     }
     
-    public void busquedaBinaria(){
-        int indexIzquierdo=0;
-        int indexDerecho=listaOrdenada.size()-1;
+    /**
+     * Busca la posición del valor en la lista ordenada de forma ascendente.
+     */
+    public void busquedaBinaria_ascendente(){
+        int inicio=0;
+        int fin=listaOrdenada.size()-1;
         int mitad = (listaOrdenada.size()) / 2;
-        while(indexIzquierdo<=indexDerecho){
-            double num = listaOrdenada.get(mitad).getValor();
-            if(num == (valor)){
-                //System.out.println(mitad);
-                indexDerecho = mitad;
-                indexIzquierdo = mitad;
-                while(indexDerecho >=0 && valor == listaOrdenada.get(indexDerecho).getValor())
-                    --indexDerecho;
-                while(indexIzquierdo < listaOrdenada.size() && listaOrdenada.get(indexIzquierdo).getValor() == valor)
-                    indexIzquierdo++;
+        
+        while(inicio<=fin){
+            // Si el elemento en la posición mitad coincide con valor, se
+            //identifica el rango de las posiciones cuyo elemento también coincide
+            // y sale del ciclo.
+            if(listaOrdenada.get(mitad).getValor() == (valor)){ 
+                fin = mitad;
+                inicio = mitad;
+                while(fin >=0 && valor == listaOrdenada.get(fin).getValor())
+                    --fin;
+                while(inicio < listaOrdenada.size() && listaOrdenada.get(inicio).getValor() == valor)
+                    inicio++;
                 break;
             }
-            else {
-                if(valor < listaOrdenada.get(mitad).getValor()){
-                    indexDerecho = mitad-1;
-                    mitad = (indexDerecho + indexIzquierdo)/2;
+            else { 
+                //Si el elemento en la mitad del rango es mayor que el valor buscado,
+                //se acota la búsqueda con los elementos menores que el.
+                if(listaOrdenada.get(mitad).getValor() > valor){
+                    fin = mitad-1;
+                    mitad = (fin + inicio)/2;
                 }
                 else{
-                    indexIzquierdo = mitad+1;
-                    mitad = (indexDerecho + indexIzquierdo)/2;
+                    //En caso contrario, se acota la búsqueda con los elementos mayores 
+                    //que el elemento de la mitad
+                    inicio = mitad+1;
+                    mitad = (fin + inicio)/2;
                 }
             }
         }
-        indexInf = indexDerecho;
-        indexSup = indexIzquierdo;
-       // System.out.println(indexInf + " " + indexSup);
+        indexInf = fin;
+        indexSup = inicio;
     }
     
-    public ArrayList<Indice> filtrar(){
+    /**
+     * Busca la posición del valor en la lista ordenada de forma descendente.
+     */
+    public void busquedaBinaria_descendente(){
+        int inicio=0;
+        int fin=listaOrdenada.size()-1;
+        int mitad = (listaOrdenada.size()) / 2;
+        
+        while(inicio<=fin){
+            if(listaOrdenada.get(mitad).getValor() == (valor)){
+                fin = mitad;
+                inicio = mitad;
+                while(fin >=0 && valor == listaOrdenada.get(fin).getValor())
+                    --fin;
+                while(inicio < listaOrdenada.size() && listaOrdenada.get(inicio).getValor() == valor)
+                    inicio++;
+                break;
+            }
+            else {
+                if(valor > listaOrdenada.get(mitad).getValor()){
+                    fin = mitad-1;
+                    mitad = (fin + inicio)/2;
+                }
+                else{
+                    inicio = mitad+1;
+                    mitad = (fin + inicio)/2;
+                }
+            }
+        }
+        indexInf = fin;
+        indexSup = inicio;
+    }
+    
+    /**
+     * Selecciona los elementos de la lista ordenada que cumplen con el criterio pedido.
+     * @param ascendente Es verdadero si la lista esta ordenada ascendentemente o falso si lo esta descendentemete
+     * @return Una lista filtrada con los elementos pedidos.
+     */
+    public ArrayList<Indice> filtrar(boolean ascendente){
         if(criterio.equals("=")){
             for(int i=indexInf+1; i<indexSup; i++){
                 listaFiltrada.add(listaOrdenada.get(i));
             }
         }
-        if(criterio.equals(">")){
+        if( (criterio.equals(">")&&ascendente) || (criterio.equals("<")&&!ascendente) ){            
             for(int i=indexSup; i<listaOrdenada.size(); i++){
                 listaFiltrada.add(listaOrdenada.get(i));
             }
         }
-        if(criterio.equals(">=")){
+        if( (criterio.equals(">=")&&ascendente) || (criterio.equals("<=")&&!ascendente) ){
             for(int i=indexInf+1; i<listaOrdenada.size(); i++){
                 listaFiltrada.add(listaOrdenada.get(i));
             }
         }
-        if(criterio.equals("<")){
+        if( (criterio.equals("<")&&ascendente) || (criterio.equals(">")&&!ascendente) ){
             for(int i=0; i<=indexInf; i++){
                 listaFiltrada.add(listaOrdenada.get(i));
             }
         }
-        if(criterio.equals("<=")){
+        if( (criterio.equals("<=")&&ascendente) || (criterio.equals(">=")&&!ascendente) ){
             for(int i=0; i<indexSup; i++){
                 listaFiltrada.add(listaOrdenada.get(i));
             }
@@ -88,28 +141,5 @@ public class Filtro {
         
         return listaFiltrada;
     }
-    
-    /// prueba
-//    public static void main(String[] args) {
-//        ArrayList<Indice> a;
-//        a = new ArrayList<>();
-//        a.add(new Indice(1, ""));
-//        a.add(new Indice(3, ""));
-//        a.add(new Indice(6, ""));
-//        a.add(new Indice(6, ""));
-//        a.add(new Indice(12, ""));
-//        a.add(new Indice(24, ""));
-//        a.add(new Indice(24, ""));
-//        a.add(new Indice(24, ""));
-//        a.add(new Indice(24, ""));
-//        a.add(new Indice(40, ""));
-//
-//        Filtro f = new Filtro(">=", 12, a);
-//        f.busquedaBinaria();
-//        ArrayList<Indice> lista = f.filtrar();
-//        for(int i=0; i<lista.size(); i++){
-//            System.out.print(lista.get(i).getIndice() + " ");
-//        }
-//    }
     
 }

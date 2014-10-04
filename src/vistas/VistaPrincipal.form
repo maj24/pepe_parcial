@@ -135,6 +135,7 @@
       <SubComponents>
         <Component class="javax.swing.JRadioButton" name="rbtn_ascendente">
           <Properties>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Ascendente"/>
           </Properties>
           <Events>
@@ -213,6 +214,7 @@
       <SubComponents>
         <Component class="javax.swing.JRadioButton" name="rbtn_insercion">
           <Properties>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Inserci&#xf3;n"/>
           </Properties>
           <Events>
