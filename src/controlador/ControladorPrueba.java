@@ -6,6 +6,8 @@
 
 package controlador;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import modelo.*;
 
@@ -17,7 +19,7 @@ public class ControladorPrueba {
     
     
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException{
         
         //Cargamos el archivo de excel.
         ExcelReader workbook = new ExcelReader(1);
@@ -25,7 +27,19 @@ public class ControladorPrueba {
         Metodos metodos = new Metodos(workbook.getIndices());
 //        //Ordenamiento
         //metodos.quickSortDescendente(0, metodos.getIndices().size() - 1);
-        metodos.mergeSortDescendente(metodos.getIndices());
+        //metodos.mezclaDirectaAscendente();
+        
+        try{
+            PrintWriter file = new PrintWriter("F.txt");
+//            for(Indice i: indicesTemporales){
+//                file.println(i.getValor());
+//            }
+            for(int i = 0; i < metodos.getIndices().size(); i++){
+                file.print(metodos.getIndices().get(i));
+            }
+        }catch(FileNotFoundException e){
+            
+        }
 //        ArrayList<Indice> listaOrdenada = metodos.getIndices();
         //Busqueda binaria.
         //Filtro filtro = new Filtro("<", 1.0, listaOrdenada);
@@ -36,11 +50,11 @@ public class ControladorPrueba {
 //        for(int i=0; i<listaResultados.size(); i++){
 //            System.out.println("Valor: " +listaResultados.get(i).getValor() + " ");
 //        }
-        
-        for(int i=0; i<metodos.getIndices().size(); i++){
-            System.out.println("Valor: " + metodos.getIndices().get(i).getValor() + " ");
-        }
-        
+//        
+//        for(int i=0; i<metodos.getIndices().size(); i++){
+//            System.out.println("Valor: " + metodos.getIndices().get(i).getValor() + " ");
+//        }
+//        
         
     }
     

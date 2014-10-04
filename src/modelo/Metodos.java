@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /*
@@ -382,7 +383,11 @@ public class Metodos {
         }
     }
    
-    public void mezclaDirectaAscendente(){
+    public void mezclaDirectaAscendente() throws FileNotFoundException{
+        
+//        MezclaDirecta md = new MezclaDirecta(this.indices);
+//        md.llenarArchivo();
+//        this.indices = md.getIndicesTemporales();
         
     }
     
