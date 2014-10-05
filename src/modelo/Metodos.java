@@ -1,6 +1,11 @@
 package modelo;
 
+import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /*
@@ -383,11 +388,11 @@ public class Metodos {
         }
     }
    
-    public void mezclaDirectaAscendente() throws FileNotFoundException{
+    public void mezclaDirectaAscendente() throws FileNotFoundException, IOException{
         
-//        MezclaDirecta md = new MezclaDirecta(this.indices);
-//        md.llenarArchivo();
-//        this.indices = md.getIndicesTemporales();
+        MezclaDirecta md = new MezclaDirecta(this.indices);
+        md.llenarArchivo();
+        this.indices = md.getIndicesTemporales();
         
     }
     

@@ -9,6 +9,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,6 +71,8 @@ public class Controlador implements ActionListener {
             try {
                 buscar();
             } catch (FileNotFoundException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             }
            JOptionPane.showMessageDialog(vp, "Búsqueda completada!");
@@ -164,7 +167,7 @@ public class Controlador implements ActionListener {
         }
     }
     
-    public void buscar() throws FileNotFoundException{
+    public void buscar() throws FileNotFoundException, IOException{
         
         int index_columna = vp.combo_indices.getSelectedIndex() + 1;
         double valor = Double.parseDouble(vp.tf_valor.getText());

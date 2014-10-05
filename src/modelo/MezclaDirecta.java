@@ -9,9 +9,12 @@ package modelo;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,6 +28,7 @@ public class MezclaDirecta {
     String F2 = "F2.txt";
     PrintWriter file = null;
     
+    
     public MezclaDirecta(ArrayList<Indice> in) throws FileNotFoundException{
         
         indicesTemporales = in;
@@ -35,23 +39,23 @@ public class MezclaDirecta {
     }
     
     public void llenarArchivo(){       
-        try{
+        try {
             file = new PrintWriter(F);
-//            for(Indice i: indicesTemporales){
-//                file.println(i.getValor());
-//            }
-            for(int i = 0; i < indicesTemporales.size(); i++){
-                file.print(i);
-            }
-        }catch(FileNotFoundException e){
-            
+        } catch (IOException ex) {
+            Logger.getLogger(MezclaDirecta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        for(int i = 0; i < indicesTemporales.size(); i++){
+            file.flush();
+            file.println(indicesTemporales.get(i).getValor());
+        }
+        llamarMezcla();
           
     }
     
     public void MezclaDirecta(String F, String F1, String F2){
         
         int n = tamañoArchivo(F);
+        System.out.println("tamaño: " + n);
         int part = 1;
         
         while(part < n){
@@ -84,7 +88,7 @@ public class MezclaDirecta {
     }
     
     public void particionar(String F, String F1, String F2, int part){
-        
+        System.out.println("particionar\n");
         int k,l;
         Scanner lectura = null;
         PrintWriter escritura1 = null, escritura2 = null;
@@ -93,20 +97,26 @@ public class MezclaDirecta {
             lectura = new Scanner(new FileReader(F));
             escritura1 = new PrintWriter(F1);
             escritura2 = new PrintWriter(F2);
-            while(lectura.hasNextLine()){
+            while(lectura.hasNextDouble()){
                 k = 0;
                 while(k < part){
-                    if(lectura.hasNextLine()){
-                        escritura1.println(lectura.nextLine());
+                   // System.out.println("k\n");
+                    if(lectura.hasNextDouble()){
+                        escritura1.flush();
+                        escritura1.println(lectura.nextDouble());
                         k++;
                     }
+                    if(!lectura.hasNext()) break;
                 }
                 l = 0;
                 while(l < part){
-                    if(lectura.hasNextLine()){
-                        escritura2.println(lectura.nextLine());
+                   // System.out.println("l\n");
+                    if(lectura.hasNextDouble()){
+                        //escritura2.flush();
+                        escritura2.println(lectura.nextDouble());
                         l++;
                     }
+                    if(!lectura.hasNext()) break;
                 }
             }
         
@@ -121,7 +131,7 @@ public class MezclaDirecta {
     }
     
     public void fusionar(String F, String F1, String F2, int part){
-     
+        System.out.println("fusionar\n");
         int k, l;
         double r1 = 0, r2 = 0;
         boolean b1 = true, b2 = true;
@@ -131,7 +141,7 @@ public class MezclaDirecta {
             
             File1 = new Scanner(new FileReader(F1));
             File2 = new Scanner(new FileReader(F2));
-            File = new PrintWriter(new FileWriter(F));
+            File = new PrintWriter(F);
             
             if(File1.hasNextDouble()){
                 r1 = File1.nextDouble();
@@ -149,6 +159,7 @@ public class MezclaDirecta {
                 while(k < part && !b1 && l < part && !b2){
                     
                     if(r1 <= r2){
+                        File.flush();
                         File.println(r1);
                         b1 = true;
                         k++;
@@ -158,7 +169,7 @@ public class MezclaDirecta {
                         }
                     }
                     else{
-                        
+                        File.flush();
                         File.println(r2);
                         b2 = true;
                         l++;
@@ -174,6 +185,7 @@ public class MezclaDirecta {
                 
                 if(k < part){
                     while(k < part && !b1){
+                        File.flush();
                         File.println(r1);
                         b1 = true;
                         k++;
@@ -186,6 +198,7 @@ public class MezclaDirecta {
                 
                 if(l < part){
                     while(l < part && !b2){
+                        File.flush();
                         File.println(r2);
                         b2 = true;
                         l++;
@@ -199,14 +212,23 @@ public class MezclaDirecta {
             }
             
             
-            if(!b1)
+            if(!b1){
+                File.flush();
                 File.println(r1);
-            if(!b2)
+            }
+                
+            if(!b2){
+                File.flush();
                 File.println(r2);
-            while(File1.hasNextDouble())
+            }
+            while(File1.hasNextDouble()){
+                File.flush();
                 File.println(File1.nextDouble());
-            while(File2.hasNextInt())
+            }
+            while(File2.hasNextInt()){
+                File.flush();
                 File.println(File2.nextDouble());
+            }
             
             //Cerrando archivos.
             File1.close();

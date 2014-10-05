@@ -31,7 +31,8 @@ public class ExcelReader {
         try {
             workbook =
                 Workbook.getWorkbook(new 
-                    File("C:\\Users\\Luis\\Documents\\3erSemestreLIS\\Estructura de Datos\\Banco_De_Mexico.xls"));
+                    File("C:\\Users\\MariaJose\\Documents\\Fmat\\3° semestre\\ED\\1 proyecto\\Banco_De_Mexico.xls"));
+                    //File("C:\\Users\\Luis\\Documents\\3erSemestreLIS\\Estructura de Datos\\Banco_De_Mexico.xls));
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Error de IO");
         } catch (BiffException ex) {
