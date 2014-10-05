@@ -390,14 +390,16 @@ public class Metodos {
    
     public void mezclaDirectaAscendente() throws FileNotFoundException, IOException{
         
-        MezclaDirecta md = new MezclaDirecta(this.indices);
+        MezclaDirecta md = new MezclaDirecta(this.indices, true);
         md.llenarArchivo();
         this.indices = md.getIndicesTemporales();
         
     }
     
-    public void mezclaDirectaDescendente(){
-        
+    public void mezclaDirectaDescendente() throws FileNotFoundException{
+        MezclaDirecta md = new MezclaDirecta(this.indices, false);
+        md.llenarArchivo();
+        this.indices = md.getIndicesTemporales();
     }
     
     public void mezclaNaturalAscendente(){

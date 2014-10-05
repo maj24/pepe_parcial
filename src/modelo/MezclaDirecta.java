@@ -27,11 +27,12 @@ public class MezclaDirecta {
     String F1 = "F1.txt";
     String F2 = "F2.txt";
     PrintWriter file = null;
+    boolean ascendente;
     
-    
-    public MezclaDirecta(ArrayList<Indice> in) throws FileNotFoundException{
+    public MezclaDirecta(ArrayList<Indice> in, boolean ascendente) throws FileNotFoundException{
         
         indicesTemporales = in;
+        this.ascendente = ascendente;
     }
     
     public void llamarMezcla(){
@@ -60,7 +61,10 @@ public class MezclaDirecta {
         
         while(part < n){
             particionar(F, F1, F2, part);
-            fusionar(F, F1, F2, part);
+            if(ascendente)
+                fusionarAscendente(F, F1, F2, part);
+            else 
+                fusionarDescenente(F, F1, F2, part);
             part *= 2;
         }
         
@@ -100,7 +104,6 @@ public class MezclaDirecta {
             while(lectura.hasNextDouble()){
                 k = 0;
                 while(k < part){
-                   // System.out.println("k\n");
                     if(lectura.hasNextDouble()){
                         escritura1.flush();
                         escritura1.println(lectura.nextDouble());
@@ -110,7 +113,6 @@ public class MezclaDirecta {
                 }
                 l = 0;
                 while(l < part){
-                   // System.out.println("l\n");
                     if(lectura.hasNextDouble()){
                         //escritura2.flush();
                         escritura2.println(lectura.nextDouble());
@@ -130,7 +132,7 @@ public class MezclaDirecta {
         
     }
     
-    public void fusionar(String F, String F1, String F2, int part){
+    public void fusionarAscendente(String F, String F1, String F2, int part){
         System.out.println("fusionar\n");
         int k, l;
         double r1 = 0, r2 = 0;
@@ -237,14 +239,125 @@ public class MezclaDirecta {
             
         } catch (Exception ex) {
             System.out.println("Error en los archivos durante la fusion");
-        }
-        
-        
+        }            
+    }
+    
+    public void fusionarDescenente(String F, String F1, String F2, int part){
+        int k, l;
+        double r1 = 0, r2 = 0;
+        boolean b1 = true, b2 = true;
+        Scanner File1, File2;
+        PrintWriter File;
+        try {
             
+            File1 = new Scanner(new FileReader(F1));
+            File2 = new Scanner(new FileReader(F2));
+            File = new PrintWriter(F);
+            
+            if(File1.hasNextDouble()){
+                r1 = File1.nextDouble();
+                b1 = false;    
+            }
+            
+            if(File2.hasNextDouble()){
+                r2 = File2.nextDouble();
+                b2 = false;    
+            }
+            
+            while((File1.hasNextDouble() || !b1) && (File2.hasNextDouble() || !b2)){
+                k = 0;
+                l = 0;
+                while(k < part && !b1 && l < part && !b2){
+                    
+                    if(r1 >= r2){
+                        File.flush();
+                        File.println(r1);
+                        b1 = true;
+                        k++;
+                        if(File1.hasNextDouble()){
+                            r1 = File1.nextDouble();
+                            b1 = false;
+                        }
+                    }
+                    else{
+                        File.flush();
+                        File.println(r2);
+                        b2 = true;
+                        l++;
+                        if(File2.hasNextDouble()){
+                            r2 = File2.nextDouble();
+                            b2 = false;
+                        }
+                    }
+                    
+                }
+                
+                //More
+                
+                if(k < part){
+                    while(k < part && !b1){
+                        File.flush();
+                        File.println(r1);
+                        b1 = true;
+                        k++;
+                        if(File1.hasNextDouble()){
+                            r1 = File1.nextDouble();
+                            b1 = false;
+                        }
+                    }
+                }
+                
+                if(l < part){
+                    while(l < part && !b2){
+                        File.flush();
+                        File.println(r2);
+                        b2 = true;
+                        l++;
+                        if(File2.hasNextDouble()){
+                            r2 = File2.nextDouble();
+                            b2 = false;
+                        }
+                    }
+                }
+                
+            }
+            
+            
+            if(!b1){
+                File.flush();
+                File.println(r1);
+            }
+                
+            if(!b2){
+                File.flush();
+                File.println(r2);
+            }
+            while(File1.hasNextDouble()){
+                File.flush();
+                File.println(File1.nextDouble());
+            }
+            while(File2.hasNextInt()){
+                File.flush();
+                File.println(File2.nextDouble());
+            }
+            
+            //Cerrando archivos.
+            File1.close();
+            File2.close();
+            File.close();
+            
+        } catch (Exception ex) {
+            System.out.println("Error en los archivos durante la fusion");
+        } 
     }
 
-    public ArrayList<Indice> getIndicesTemporales() {
-        return this.indicesTemporales;
+    public ArrayList<Indice> getIndicesTemporales() throws FileNotFoundException {
+        indicesTemporales.clear();
+        Scanner File = new Scanner(new FileReader(F));
+        while(File.hasNextDouble()){
+                indicesTemporales.add(new Indice(File.nextDouble(), ""));
+            }
+        return indicesTemporales;
     }
 
     public void imprimir(){
